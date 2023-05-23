@@ -7,6 +7,8 @@ on:
        - 'Application/**'
        - 'ArmTemplates/**'
 
+  workflow_dispatch:
+
 env:
   RESOURCEGROUPNAME: "AKS01-rg"
   LOCATION: "East US"
