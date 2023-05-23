@@ -7,8 +7,19 @@ env:
   RESOURCE_GROUP: "AKS01-rg"
 
 jobs:
-  cleanup:
-      # Builds and pushes an image up to your Azure Container Registry
-      - name: Delete Resource Group
-        run: |
-          az group delete ${{ env.RESOURCE_GROUP }}
+  build:
+    name: Build and push image to container registry
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # login to azure
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_SECRET }}
+        
+   
+    - name: Create ACR
+      id: createACR
+      run: |
+          az delete group -n ${{ env.RESOURCE_GROUP }} 
