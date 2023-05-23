@@ -10,6 +10,7 @@ jobs:
   build:
     name: Cleanup azure resources
     runs-on: ubuntu-latest
+    timeout-minutes: 600
     steps:
     - uses: actions/checkout@v2
     
