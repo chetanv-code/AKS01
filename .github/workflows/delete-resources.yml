@@ -22,7 +22,7 @@ jobs:
     - name: delete resources
       id: deleteResources
       run: |
-          az delete group -n ${{ env.RESOURCE_GROUP }} 
+          az group delete -n ${{ env.RESOURCE_GROUP }} 
 
     - name : Cleanup
       run: | 
