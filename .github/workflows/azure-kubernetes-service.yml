@@ -1,8 +1,6 @@
 name: Build and deploy an app to AKS
 
 on:
-  push:
-    branches: ["delete"]
   workflow_dispatch:
 
 env:
