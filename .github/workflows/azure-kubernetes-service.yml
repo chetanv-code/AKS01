@@ -1,0 +1,16 @@
+name: Build and deploy an app to AKS
+
+on:
+  push:
+    branches: ["delete"]
+  workflow_dispatch:
+
+env:
+  RESOURCE_GROUP: "AKS01-rg"
+
+jobs:
+  cleanup:
+      # Builds and pushes an image up to your Azure Container Registry
+      - name: Delete Resource Group
+        run: |
+          az group delete ${{ env.RESOURCE_GROUP }}
