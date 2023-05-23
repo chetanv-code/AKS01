@@ -19,7 +19,7 @@ jobs:
         creds: ${{ secrets.AZURE_SECRET }}
         
    
-    - name: Create ACR
-      id: createACR
+    - name: delete resources
+      id: deleteResources
       run: |
           az delete group -n ${{ env.RESOURCE_GROUP }} 
