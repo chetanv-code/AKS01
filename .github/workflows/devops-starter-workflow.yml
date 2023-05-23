@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+    paths: 
+       - 'Application/**'
+       - 'ArmTemplates/**'
 
 env:
   RESOURCEGROUPNAME: "AKS01-rg"
