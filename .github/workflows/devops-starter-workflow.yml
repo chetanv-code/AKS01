@@ -28,6 +28,8 @@ env:
   HTTPSAPPLICATIONROUTINGENABLED: false
   KUBERNETESAPI: "apps/v1"
   NAMESPACE: "aks016cbb"
+  GDN_TRIVY_IMAGEPATH: ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
+  GDN_TRIVY_ACTION: Repository
 
 jobs:
   build:
@@ -72,6 +74,8 @@ jobs:
     - name: Run Microsoft Security DevOps Analysis
       uses: microsoft/security-devops-action@preview
       id: msdo
+      with: 
+        tools: trivy
 
       # Upload alerts to the Security tab
     - name: Upload alerts to Security tab
