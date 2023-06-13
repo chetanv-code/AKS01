@@ -28,7 +28,7 @@ env:
   HTTPSAPPLICATIONROUTINGENABLED: false
   KUBERNETESAPI: "apps/v1"
   NAMESPACE: "aks016cbb"
-  GDN_TRIVY_IMAGEPATH: aks01acr2345.azurecr.io/aks01c0d1:${{ github.sha }}
+  # GDN_TRIVY_IMAGEPATH: aks01acr2345.azurecr.io/aks01c0d1:${{ github.sha }}
   # GDN_TRIVY_ACTION: Repository
 
 jobs:
