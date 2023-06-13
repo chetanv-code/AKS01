@@ -28,8 +28,9 @@ env:
   HTTPSAPPLICATIONROUTINGENABLED: false
   KUBERNETESAPI: "apps/v1"
   NAMESPACE: "aks016cbb"
-  GDN_TRIVY_IMAGEPATH: aks01acr2345.azurecr.io/aks01c0d1:${{ github.sha }}
-  GDN_TRIVY_ACTION: client
+  #GDN_TRIVY_IMAGEPATH: aks01acr2345.azurecr.io/aks01c0d1:${{ github.sha }}
+  GDN_TRIVY_ACTION: image
+  GDN_TRIVY_TARGET: aks01acr2345.azurecr.io/aks01c0d1:${{ github.sha }}
 
 jobs:
   build:
@@ -70,21 +71,21 @@ jobs:
         docker build "$GITHUB_WORKSPACE/Application" -f  "Application/Dockerfile" -t ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
         
-    -  name: Aqua Security Trivy
+    #-  name: Aqua Security Trivy
   # You may pin to the exact commit or the version.
   # uses: aquasecurity/trivy-action@41f05d9ecffa2ed3f1580af306000f734b733e54
-       uses: aquasecurity/trivy-action@0.11.2
-       with:
+       #uses: aquasecurity/trivy-action@0.11.2
+       #with:
           # Scan type to use for scanning vulnerability
           #scan-type: # optional, default is image
           # image reference(for backward compatibility)
           #image-ref: 
           # reference of tar file to scan
-          input: ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }} # optional, default is 
+          #input: ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }} # optional, default is 
           # Scan reference
           # scan-ref: # optional, default is .
           # exit code when vulnerabilities were found
-          exit-code: 100 # optional
+          #exit-code: 100 # optional
           # ignore unfixed vulnerabilities
           #ignore-unfixed: # optional, default is false
           # comma-separated list of vulnerability types (os,library)
