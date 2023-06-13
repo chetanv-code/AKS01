@@ -35,8 +35,6 @@ jobs:
   build:
     name: Build and push image to container registry
     runs-on: ubuntu-latest
-    env: 
-      a=1
     steps:
     - uses: actions/checkout@v2
 
